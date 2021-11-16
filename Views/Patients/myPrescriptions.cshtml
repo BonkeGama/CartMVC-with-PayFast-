@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Green.Models.Prescription>
+
+@{
+    ViewBag.Title = "myPrescriptions";
+}
+
+<h2>myPrescriptions</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.appointmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.frequency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dosage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timesPerDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unitPerTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medicineId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.appointmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.frequency)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dosage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timesPerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unitPerTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.medicineId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.prescriptionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prescriptionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prescriptionId })
+        </td>
+    </tr>
+}
+
+</table>

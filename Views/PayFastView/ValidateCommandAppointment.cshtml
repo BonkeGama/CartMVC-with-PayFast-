@@ -1,0 +1,43 @@
+﻿@model Green.Models.PayFastModel
+@{
+    ViewBag.Title = "ValidateCommandAppointment";
+    //Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ValidateCommandAppointment</h2>
+<h2>Payment</h2>
+<div class="Myjumbotron" style="background:rgba(250,250,250,0.6)">
+    <form id="hiddenform" action=@Model.actionURL>
+        @Html.HiddenFor(model => model.merchant_id)
+        @Html.HiddenFor(model => model.merchant_key)
+        @Html.HiddenFor(model => model.m_payment_id)
+        @Html.HiddenFor(model => model.payment_mode)
+        @Html.HiddenFor(model => model.name_first)
+        @Html.HiddenFor(model => model.name_last)
+        @Html.HiddenFor(model => model.email_address)
+        @Html.HiddenFor(model => model.site)
+        @Html.HiddenFor(model => model.return_url)
+        @Html.HiddenFor(model => model.cancel_url)
+        @Html.HiddenFor(model => model.notify_url)
+        @Html.HiddenFor(model => model.item_name)
+        @Html.HiddenFor(model => model.amount)
+    </form>
+
+    <br /><br /><br /><br /><br /><br />
+    <p style="text-align: center">
+        <h3>
+            Connecting to Payfast , please wait ...
+
+        </h3>
+    </p>
+    @Scripts.Render("~/bundles/jquery")
+
+    <script type="text/javascript" language="javascript">
+        $(this.document).ready(function () {
+            var form = $("form");
+            form.submit();
+        });
+    </script>
+</div>
+
+

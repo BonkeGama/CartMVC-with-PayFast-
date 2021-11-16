@@ -1,0 +1,103 @@
+﻿
+@model IEnumerable<Green.Models.Patient>
+@{
+    ViewBag.Title = "PatientIndex";
+}
+
+<div class="container">
+
+    <div class="form-group">
+
+        <div class="input-group">
+
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+
+        </div>
+
+    </div>
+
+</div>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> User ID</th>
+            <th> User Name</th>
+            <th>  Birth Date</th>
+            <th> Sex</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+
+
+            <tr class="Search">
+                <td>
+                    @item.PatientID
+                </td>
+
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.BirthDate
+                </td>
+
+                <td>
+                    @item.Sex
+
+                </td>
+
+                <td>
+                    <a href="@Url.Action("Create")"></a>
+                    @Html.ActionLink("Book", "DentistCreate", "Appointment", new { Controller = "Appointment", Action = "DentistCreate", id = item.PatientID })
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        function Contains(text_one,text_two)
+        {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function()
+        {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            })
+        }
+        )
+    }
+    )
+    var SendEmail = function () {
+
+        $.ajax({
+            type: "Post",
+            url: "/Students/SendMailToUser",
+            success:function (data)
+            {
+                alert("Sucess")
+            }
+
+
+        })
+
+    }
+</script>

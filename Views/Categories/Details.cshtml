@@ -1,0 +1,41 @@
+﻿@model Green.Models.Category
+
+@{
+    ViewBag.Title = "Category Details";
+}
+
+
+<table class="table">
+    <tr>
+        <th>@Html.LabelFor(model => model.Category_ID)</th>
+        <td>
+            @Html.DisplayFor(model => model.Category_ID)
+        </td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(model => model.Category_Name)</th>
+        <td>
+            @Html.DisplayFor(model => model.Category_Name)
+        </td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(model => model.Description)</th>
+        <td>
+            @Html.DisplayFor(model => model.Description)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a class="btn btn-default" href="@Url.Action("Index","Categories")">
+                <i class="fa fa-angle-left"></i>
+                Back to List
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-default" href="@Url.Action("Edit","Categories", new { id = Model.Category_ID })">
+                <i class="fa fa-edit"></i>
+                Edit
+            </a>
+        </td>
+    </tr>
+</table>
